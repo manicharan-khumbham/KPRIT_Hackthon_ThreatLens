@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "ThreatLens - Gmail Phishing Detector",
+  "version": "1.0",
+  "description": "Detects phishing emails in Gmail using a machine learning model",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "http://localhost:8080/*",
+    "http://127.0.0.1:8080/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ThreatLens"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
