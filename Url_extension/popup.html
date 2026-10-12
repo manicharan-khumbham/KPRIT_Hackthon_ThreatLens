@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060a12">
+  <title>ThreatVerdict | Security Scanner</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div class="logo" aria-hidden="true">T</div>
+      <div class="brand">
+        <h1>Threat<span>Verdict</span></h1>
+      </div>
+    </header>
+
+    <main class="scanner">
+
+      <div class="tabs" role="tablist" aria-label="Scan type">
+        <button
+          type="button"
+          id="emailTab"
+          class="tab-button active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="emailPanel"
+        >
+          Email / Message
+        </button>
+
+        <button
+          type="button"
+          id="urlTab"
+          class="tab-button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="urlPanel"
+        >
+          URL
+        </button>
+      </div>
+
+      <section id="emailPanel" class="input-panel" role="tabpanel">
+        <label for="messageInput" class="visually-hidden">
+          Email or message to scan
+        </label>
+
+        <textarea
+          id="messageInput"
+          placeholder="Paste a suspicious email or message here..."
+          spellcheck="false"
+        ></textarea>
+      </section>
+
+      <section
+        id="urlPanel"
+        class="input-panel"
+        role="tabpanel"
+        hidden
+      >
+        <label for="urlInput" class="visually-hidden">
+          URL to scan
+        </label>
+
+        <textarea
+          id="urlInput"
+          placeholder="Paste a suspicious URL here..."
+          spellcheck="false"
+        ></textarea>
+      </section>
+
+      <div class="input-footer">
+        <span id="charCount" class="char-count">0 chars</span>
+
+        <div class="input-actions">
+          <button type="button" id="pasteButton" class="utility-button">
+            <span aria-hidden="true">▤</span> Paste
+          </button>
+
+          <button type="button" id="clearButton" class="utility-button">
+            <span aria-hidden="true">×</span> Clear
+          </button>
+        </div>
+      </div>
+
+      <button type="button" id="scanButton" class="scan-button">
+        Scan <span aria-hidden="true">→</span>
+      </button>
+
+      <div
+        id="statusMessage"
+        class="status-message"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+      <section id="resultSection" class="result-section" hidden>
+        <h2 id="resultTitle">Scan Result</h2>
+        <p id="resultMessage"></p>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <span>Security powered by <strong>ThreatVerdict</strong></span>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
